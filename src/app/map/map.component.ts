@@ -13,6 +13,15 @@ export class MapComponent implements OnInit {
   constructor(private caseService: CaseService) {
   }
 
+  icon = {
+    icon: L.icon({
+      iconSize: [25, 41],
+      iconAnchor: [13, 0],
+      iconUrl: 'assets/leaflet/marker-icon.png',
+      shadowUrl: 'assets/leaflet/marker-shadow.png'
+    })
+  };
+
   ngOnInit(): void {
     this.initMap();
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -28,7 +37,7 @@ export class MapComponent implements OnInit {
           const popup = L.popup().setLatLng([element.lat, element.lon]).setContent(
             `<p><strong>${element.city_name}</strong><br/><strong>Confirmed</strong>:
             ${element.confirmed}<br />Dead: ${element.dead}<br />Recovered: ${element.recovered}</p>`);
-          L.marker([element.lat, element.lon]).addTo(this.map).bindPopup(popup);
+          L.marker([element.lat, element.lon], this.icon).addTo(this.map).bindPopup(popup);
         });
       });
 
