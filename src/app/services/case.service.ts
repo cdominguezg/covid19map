@@ -16,7 +16,7 @@ export class CaseService {
   getCases(): Observable<Case[]> {
     // https://smackcristian.pythonanywhere.com/cases/
 
-    return this.http.get<Case[]>(`http://smackcristian.pythonanywhere.com/cases/`)
+    return this.http.get<Case[]>(`https://smackcristian.pythonanywhere.com/cases/`)
       .pipe(
         tap(response => {
           console.log('Ok');
