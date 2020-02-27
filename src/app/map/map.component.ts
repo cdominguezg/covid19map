@@ -13,14 +13,18 @@ export class MapComponent implements OnInit {
   constructor(private caseService: CaseService) {
   }
 
-  icon = {
-    icon: L.icon({
-      iconSize: [25, 41],
-      iconAnchor: [13, 0],
+  icon = L.Icon.extend({
+    options: {
+      iconSize: [38, 95],
+      shadowSize: [50, 64],
+      iconAnchor: [22, 94],
+      shadowAnchor: [4, 62],
+      popupAnchor: [-3, -76],
       iconUrl: 'assets/leaflet/marker-icon.png',
       shadowUrl: 'assets/leaflet/marker-shadow.png'
-    })
-  };
+    }
+  });
+
 
   ngOnInit(): void {
     this.initMap();
